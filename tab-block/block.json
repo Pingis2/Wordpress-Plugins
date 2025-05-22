@@ -3,6 +3,7 @@
 	"apiVersion": 3,
 	"name": "create-block/tab-block",
 	"version": "0.1.0",
+	"author": "Anton Schyberg",
 	"title": "Tab Block",
 	"category": "widgets",
 	"icon": "smiley",
