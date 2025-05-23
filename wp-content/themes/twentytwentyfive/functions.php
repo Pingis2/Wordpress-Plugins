@@ -59,6 +59,15 @@ if ( ! function_exists( 'twentytwentyfive_enqueue_styles' ) ) :
 endif;
 add_action( 'wp_enqueue_scripts', 'twentytwentyfive_enqueue_styles' );
 
+function cool_theme_setup() {
+
+    add_theme_support('menus');
+
+    register_nav_menu('primary', 'Primary Header Navigation');
+    register_nav_menu('secondary', 'Footer Navigation');
+    register_nav_menu('widget-posts', 'Widget Posts');
+}
+
 // Registers custom block styles.
 if ( ! function_exists( 'twentytwentyfive_block_styles' ) ) :
 	/**

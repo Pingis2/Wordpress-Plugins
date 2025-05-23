@@ -35,56 +35,68 @@ import { PanelBody } from '@wordpress/components';
 
 export default function Edit() {
 	const blockProps = useBlockProps();
-	const [activeTab, setActiveTab] = useState(0);
+	const [ activeTab, setActiveTab ] = useState( 0 );
 
-	const tabButtons = wp.data.select('core/block-editor').getBlocks(blockProps.clientId)
-		.find(block => block.name === 'create-block/tab-buttons-wrapper')?.innerBlocks || [];
-	const tabContents = wp.data.select('core/block-editor').getBlocks(blockProps.clientId)
-        .find(block => block.name === 'create-block/tab-content-wrapper')?.innerBlocks || [];
+	const tabButtons =
+		wp.data
+			.select( 'core/block-editor' )
+			.getBlocks( blockProps.clientId )
+			.find(
+				( block ) => block.name === 'create-block/tab-buttons-wrapper'
+			)?.innerBlocks || [];
+	const tabContents =
+		wp.data
+			.select( 'core/block-editor' )
+			.getBlocks( blockProps.clientId )
+			.find(
+				( block ) => block.name === 'create-block/tab-content-wrapper'
+			)?.innerBlocks || [];
 
 	return (
 		<div { ...blockProps }>
-			<div className='block'>
+			<div className="block">
 				<InspectorControls>
-					<PanelBody title={__('Tabs settings', 'awesome')}>
-						<p>{__('add or remove tab', 'awesome')}</p>
+					<PanelBody title={ __( 'Tabs settings', 'awesome' ) }>
+						<p>{ __( 'add or remove tab', 'awesome' ) }</p>
 					</PanelBody>
 				</InspectorControls>
 
 				<div className="tab-buttons-wrapper">
-					{tabButtons.map((buttonBlock, idx) => (
+					{ tabButtons.map( ( buttonBlock, idx ) => (
 						<button
-							key={buttonBlock.clientId}
-							className={idx === activeTab ? 'active' : ''}
-							onClick={() => setActiveTab(idx)}
+							key={ buttonBlock.clientId }
+							className={ idx === activeTab ? 'active' : '' }
+							onClick={ () => setActiveTab( idx ) }
 							type="button"
 						>
-							{buttonBlock.attributes.title}
+							{ buttonBlock.attributes.title }
 						</button>
-					))}
+					) ) }
 					<InnerBlocks
-						allowedBlocks={['create-block/tab-buttons-wrapper']}
-						template={[['create-block/tab-buttons-wrapper']]}
-						templateLock={false}
+						allowedBlocks={ [ 'create-block/tab-buttons-wrapper' ] }
+						template={ [ [ 'create-block/tab-buttons-wrapper' ] ] }
+						templateLock={ false }
 					/>
 				</div>
 
 				<div className="tab-content-wrapper">
-					{tabContents.map((contentBlock, idx) => (
+					{ tabContents.map( ( contentBlock, idx ) => (
 						<div
-							key={contentBlock.clientId}
-							className={`tab-content${idx === activeTab ? '' : ' hidden'}`}
+							key={ contentBlock.clientId }
+							className={ `tab-content${
+								idx === activeTab ? '' : ' hidden'
+							}` }
 						>
 							<InnerBlocks
-								clientId={contentBlock.clientId}
-								templateLock={false}
+								clientId={ contentBlock.clientId }
+								templateLock={ false }
 							/>
 						</div>
-					))}
+					) ) }
 					<InnerBlocks
-						allowedBlocks={['create-block/tab-content-wrapper']}
-						template={[['create-block/tab-content-wrapper']]}
-						templateLock={false}
+						allowedBlocks={ [ 'create-block/tab-content-wrapper' ] }
+						template={ [ [ 'create-block/tab-content-wrapper' ] ] }
+						templateLock={ false }
 					/>
 				</div>
 			</div>

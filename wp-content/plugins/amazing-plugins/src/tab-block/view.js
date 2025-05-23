@@ -24,32 +24,36 @@
 console.log( 'Hello World! (from create-block-tab-block block)' );
 /* eslint-enable no-console */
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener( 'DOMContentLoaded', function () {
+	document.querySelectorAll( '.tab-block' ).forEach( ( tabBlock ) => {
+		const buttons = tabBlock.querySelectorAll(
+			'.tab-buttons-wrapper button'
+		);
+		const contents = tabBlock.querySelectorAll(
+			'.tab-content-wrapper .tab-content'
+		);
 
-    document.querySelectorAll('.tab-block').forEach(tabBlock => {
-        const buttons = tabBlock.querySelectorAll('.tab-buttons-wrapper button');
-        const contents = tabBlock.querySelectorAll('.tab-content-wrapper .tab-content');
+		buttons.forEach( ( button, index ) => {
+			button.addEventListener( 'click', function () {
+				// Remove active class from all buttons
+				buttons.forEach( ( btn ) => btn.classList.remove( 'active' ) );
+				contents.forEach( ( content ) =>
+					content.classList.add( 'hidden' )
+				);
 
-        buttons.forEach((button, index) => {
-            button.addEventListener('click', function () {
-                // Remove active class from all buttons
-                buttons.forEach(btn => btn.classList.remove('active'));
-                contents.forEach(content => content.classList.add('hidden'));
+				button.classList.add( 'active' );
+				if ( contents[ index ] ) {
+					contents[ index ].classList.remove( 'hidden' );
+				}
+			} );
+		} );
 
-                button.classList.add('active');
-                if (contents[index]) {
-                    contents[index].classList.remove('hidden');
-                }
-            });
-        });
-
-        // Ensure only the first content is visible by default
-        if (buttons.length && contents.length) {
-            buttons[0].classList.add('active');
-            contents.forEach((content, index) => {
-                content.classList.toggle('hidden', index !== 0);
-            })
-        }
-    })
-    
-});
+		// Ensure only the first content is visible by default
+		if ( buttons.length && contents.length ) {
+			buttons[ 0 ].classList.add( 'active' );
+			contents.forEach( ( content, index ) => {
+				content.classList.toggle( 'hidden', index !== 0 );
+			} );
+		}
+	} );
+} );
