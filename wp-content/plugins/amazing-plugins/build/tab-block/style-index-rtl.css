@@ -1,0 +1,86 @@
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/tab-block/style.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.tab-block {
+  width: auto;
+  height: 300px;
+  margin: 0 200px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.tab-block .tab-buttons-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+.tab-block .tab-buttons-wrapper button {
+  all: unset;
+  cursor: pointer;
+  background-color: whitesmoke;
+  padding: 5px 10px;
+  width: auto;
+}
+.tab-block .tab-buttons-wrapper button.active {
+  border: 4px solid rgb(211, 211, 211);
+}
+.tab-block .tab-content-wrapper {
+  position: relative;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+.tab-block .tab-content-wrapper .tab-content {
+  background-color: whitesmoke;
+  width: 100%;
+  min-height: 300px;
+  height: auto;
+  transition: all 0.3s ease-in-out;
+  color: black;
+  border: 4px solid rgb(211, 211, 211);
+  gap: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.tab-block .tab-content-wrapper .tab-content .wp-block-create-block-tab-content {
+  padding: 0 10px;
+}
+.tab-block .tab-content-wrapper .tab-content .wp-block-create-block-tab-content .tab-buttons {
+  position: relative;
+  margin-right: 40px;
+}
+.tab-block .tab-content-wrapper .tab-content .wp-block-create-block-tab-content .tab-buttons.active {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  font-size: 1.1rem;
+}
+.tab-block .tab-content-wrapper .tab-content .wp-block-create-block-tab-content .tab-buttons button {
+  all: unset;
+  cursor: pointer;
+  background-color: whitesmoke;
+  padding: 5px 0;
+  width: 100px;
+}
+.tab-block .tab-content-wrapper .tab-content .wp-block-create-block-tab-content .tab-content {
+  width: 500px;
+  margin-top: 10px;
+}
+.tab-block .tab-content-wrapper .tab-content .wp-block-create-block-tab-content .tab-content p {
+  z-index: 1;
+  position: relative;
+  color: black;
+}
+
+.hidden {
+  display: none;
+}
