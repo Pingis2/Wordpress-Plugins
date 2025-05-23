@@ -1,34 +1,6 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
-	'build' => array(
-		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'apiVersion' => 3,
-		'name' => 'create-block/awesome',
-		'version' => '0.1.0',
-		'title' => 'Awesome',
-		'category' => 'widgets',
-		'icon' => 'menu',
-		'description' => 'Example block scaffolded with Create Block tool.',
-		'example' => array(
-			
-		),
-		'supports' => array(
-			'html' => false
-		),
-		'attributes' => array(
-			'menuSlug' => array(
-				'type' => 'string',
-				'default' => 'secondary'
-			)
-		),
-		'textdomain' => 'awesome',
-		'editorScript' => 'file:./index.js',
-		'editorStyle' => 'file:./index.css',
-		'style' => 'file:./style-index.css',
-		'render' => 'file:./render.php',
-		'viewScript' => 'file:./view.js'
-	),
 	'awesome' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
@@ -44,6 +16,12 @@ return array(
 		'supports' => array(
 			'html' => false
 		),
+		'attributes' => array(
+			'menuSlug' => array(
+				'type' => 'string',
+				'default' => 'main'
+			)
+		),
 		'textdomain' => 'awesome',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
@@ -54,7 +32,7 @@ return array(
 	'hamburger-menu' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'create-block/hamburger-menu',
+		'name' => 'create-block/awesome',
 		'version' => '0.1.0',
 		'title' => 'Awesome',
 		'category' => 'widgets',
@@ -72,7 +50,7 @@ return array(
 				'default' => 'secondary'
 			)
 		),
-		'textdomain' => 'hamburger-menu',
+		'textdomain' => 'awesome',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',

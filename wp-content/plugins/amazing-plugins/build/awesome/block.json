@@ -11,6 +11,12 @@
   "supports": {
     "html": false
   },
+  "attributes": {
+    "menuSlug": {
+      "type": "string",
+      "default": "main"
+    }
+  },
   "textdomain": "awesome",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",

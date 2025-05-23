@@ -29,10 +29,93 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+
+import { useEffect, useState } from '@wordpress/element';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, SelectControl } from '@wordpress/components';
+
+export default function Edit( { attributes, setAttributes } ) {
+	const { menuSlug } = attributes;
+	const [ menus, setMenus ] = useState( [] );
+
+	useEffect( () => {
+		wp.apiFetch( { path: '/wp/v2/menus' } )
+			.then( ( data ) => {
+				setMenus(
+					data.map( ( menu ) => ( {
+						label: menu.name,
+						value: menu.slug,
+					} ) )
+				);
+			} )
+			.catch( ( error ) => {
+				console.error( 'Error fetching menus:', error );
+				setMenus( [] );
+			} );
+	}, [] );
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Awesome – hello from the editor!', 'awesome' ) }
-		</p>
+		<div { ...useBlockProps() }>
+			<InspectorControls>
+				<PanelBody title={ __( 'Menu Settings', 'awesome' ) }>
+					<SelectControl
+						label={ __( 'Select Menu', 'awesome' ) }
+						value={ menuSlug }
+						options={ [
+							{
+								label: __( 'Select a menu', 'awesome' ),
+								value: '',
+							},
+							...menus,
+						] }
+						onChange={ ( value ) =>
+							setAttributes( { menuSlug: value } )
+						}
+					/>
+				</PanelBody>
+			</InspectorControls>
+
+			<div
+				id="menuToggle"
+				style={ {
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '5px',
+				} }
+			>
+				<span
+					style={ {
+						background: 'black',
+						width: '20px',
+						height: '2px',
+					} }
+				></span>
+				<span
+					style={ {
+						background: 'black',
+						width: '20px',
+						height: '2px',
+					} }
+				></span>
+				<span
+					style={ {
+						background: 'black',
+						width: '20px',
+						height: '2px',
+					} }
+				></span>
+
+				<div className="menu hidden">
+					<div className="close-menu hidden">
+						<span></span>
+						<span></span>
+					</div>
+					<ul>
+						<li>{ __( 'Menu Item 1', 'awesome' ) }</li>
+						<li>{ __( 'Menu Item 2', 'awesome' ) }</li>
+						<li>{ __( 'Menu Item 3', 'awesome' ) }</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	);
 }
